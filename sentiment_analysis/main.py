@@ -12,13 +12,7 @@ from src.data_processing import load_data, prepare_data
 from src.traditional_model import TfidfSvmModel
 from src.transformer_model import TransformerModel
 from src.evaluation import evaluate_and_compare, find_misclassified_examples
-from src.explainability import (
-    get_important_features_svm, 
-    visualize_feature_importance,
-    explain_prediction_with_lime,
-    visualize_transformer_attention,
-    integrated_gradients_explain
-)
+ 
 
 
 def main(args):
@@ -143,67 +137,11 @@ def main(args):
         print("Generating model explanations...")
         print("="*50)
         
-        # Get important features for SVM
-        important_features = get_important_features_svm(
-            tfidf_svm_model.vectorizer,
-            tfidf_svm_model.classifier,
-            class_names
-        )
+    
         
-        # Visualize feature importance
-        visualize_feature_importance(
-            important_features,
-            os.path.join(args.output_dir, 'visualizations', 'feature_importance.png')
-        )
+ 
         
-        # Sample texts for explanation
-        if args.explain_text:
-            sample_text = args.explain_text
-        else:
-            # Use a sample from test data
-            sample_idx = 0
-            sample_text = data['X_test'][sample_idx]
-            print(f"Using sample text: '{sample_text}'")
-            print(f"True label: {class_names[data['y_test'][sample_idx]]}")
         
-        # Explain with LIME
-        lime_explanation = explain_prediction_with_lime(
-            sample_text,
-            tfidf_svm_model.vectorizer,
-            tfidf_svm_model.classifier,
-            class_names
-        )
-        
-        # Save explanation to file
-        with open(os.path.join(args.output_dir, 'results', 'lime_explanation.txt'), 'w') as f:
-            f.write(f"Text: {lime_explanation['text']}\n")
-            f.write(f"Predicted class: {lime_explanation['predicted_class']}\n\n")
-            f.write("Feature contributions:\n")
-            for feature, weight in lime_explanation['explanation']:
-                f.write(f"  {feature}: {weight:.4f}\n")
-            
-            if 'probabilities' in lime_explanation:
-                f.write("\nClass probabilities:\n")
-                for class_name, prob in lime_explanation['probabilities'].items():
-                    f.write(f"  {class_name}: {prob:.4f}\n")
-        
-        # Transformer explanations
-        if transformer_model and not args.skip_transformer:
-            # Visualize attention
-            attention_data = visualize_transformer_attention(
-                sample_text,
-                transformer_model.model,
-                transformer_model.tokenizer,
-                class_names
-            )
-            
-            # Integrated gradients
-            ig_data = integrated_gradients_explain(
-                sample_text,
-                transformer_model.model,
-                transformer_model.tokenizer,
-                class_names
-            )
     
     print("\n" + "="*50)
     print("Sentiment analysis completed successfully!")
