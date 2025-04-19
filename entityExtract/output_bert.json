@@ -1,0 +1,23 @@
+{
+  "Person": [
+    "Steve Jobs",
+    "Steve Wozniak",
+    "Ronald Wayne",
+    "Tim Cook"
+  ],
+  "Date": [],
+  "Location": [
+    "Cupertino",
+    "California",
+    "San Jose"
+  ],
+  "Organization": [
+    "Apple Inc",
+    "Homebrew Computer Club"
+  ],
+  "Event": [
+    "Apple I",
+    "iPhone",
+    "WWDC"
+  ]
+}

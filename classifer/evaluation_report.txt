@@ -1,0 +1,63 @@
+
+===== Evaluation for Template 1 =====
+
+Accuracy: 1.000
+
+              precision    recall  f1-score   support
+
+    artistic      1.000     1.000     1.000         2
+      boring      1.000     1.000     1.000         2
+   emotional      1.000     1.000     1.000         1
+
+    accuracy                          1.000         5
+   macro avg      1.000     1.000     1.000         5
+weighted avg      1.000     1.000     1.000         5
+
+
+Confusion Matrix:
+[[2 0 0]
+ [0 2 0]
+ [0 0 1]]
+
+
+===== Evaluation for Template 2 =====
+
+Accuracy: 1.000
+
+              precision    recall  f1-score   support
+
+    artistic      1.000     1.000     1.000         2
+      boring      1.000     1.000     1.000         2
+   emotional      1.000     1.000     1.000         1
+
+    accuracy                          1.000         5
+   macro avg      1.000     1.000     1.000         5
+weighted avg      1.000     1.000     1.000         5
+
+
+Confusion Matrix:
+[[2 0 0]
+ [0 2 0]
+ [0 0 1]]
+
+
+===== Evaluation for Template 3 =====
+
+Accuracy: 0.600
+
+              precision    recall  f1-score   support
+
+    artistic      0.500     1.000     0.667         2
+      boring      0.000     0.000     0.000         2
+   emotional      1.000     1.000     1.000         1
+
+    accuracy                          0.600         5
+   macro avg      0.500     0.667     0.556         5
+weighted avg      0.400     0.600     0.467         5
+
+
+Confusion Matrix:
+[[2 0 0]
+ [2 0 0]
+ [0 0 1]]
+
