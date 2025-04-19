@@ -1,0 +1,23 @@
+/Users/pruthvirajadhav/code/AI assignment/mycoursera/sentiment_analysis/data/IMDB Dataset.csv 
+python main.py --data_path /Users/pruthvirajadhav/code/AI assignment/mycoursera/sentiment_analysis/data/IMDB Dataset.csv  --text_column text --label_column sentiment --test_size 0.2 --transformer_model bert-base-uncased --batch_size 16 --epochs 3 --output_dir output --save_models --explain
+python main.py --data_path '/Users/pruthvirajadhav/code/AI assignment/mycoursera/sentiment_analysis/data/sample100.csv'  --text_column review --label_column sentiment --test_size 0.2 --transformer_model gaunernst/bert-tiny-uncased --batch_size 16 --epochs 3 --output_dir output --save_models --explain
+
+
+pip install git+https://github.com/pytorch/captum.git
+
+pip install transformers[torch]
+
+pip install spacy python-dateutil openai transformers
+python -m spacy download en_core_web_sm
+
+python entity_extract.py -i input.txt -o output_spacy.json --engine spacy
+
+python entity_extract.py -i input.txt -o output_openai.json --engine openai
+
+
+python entity_extract.py -i input.txt -o output_openai.json --engine openai
+python entity_extract.py -i input.txt -o output_bert.json --engine bert
+
+
+
+ 
