@@ -26,3 +26,5 @@ pip install doc_parser
 
 
  pip install transformers==4.37.2  accelerate==0.28.0 
+
+ pip install openai numpy scikit-learn tqdm

@@ -1,0 +1,61 @@
+template_type,input_text,true_label,prompt,response,predicted_label,confidence
+1,The visuals and soundtrack were stunning.,artistic,"Text: The visuals and soundtrack were stunning.
+Question: What is the best label for this text? Options: ['artistic', 'boring', 'emotional']
+Answer:",artistic,artistic,1.0
+1,I didn’t care about the characters or the ending.,boring,"Text: I didn’t care about the characters or the ending.
+Question: What is the best label for this text? Options: ['artistic', 'boring', 'emotional']
+Answer:",the best label for this text is: 'boring'.,boring,1.0
+1,The performance moved me to tears.,emotional,"Text: The performance moved me to tears.
+Question: What is the best label for this text? Options: ['artistic', 'boring', 'emotional']
+Answer:",emotional,emotional,1.0
+1,An innovative take on classic storytelling.,artistic,"Text: An innovative take on classic storytelling.
+Question: What is the best label for this text? Options: ['artistic', 'boring', 'emotional']
+Answer:",answer: artistic,artistic,1.0
+1,Nothing special; just boring dialogue and tired tropes.,boring,"Text: Nothing special; just boring dialogue and tired tropes.
+Question: What is the best label for this text? Options: ['artistic', 'boring', 'emotional']
+Answer:",boring,boring,1.0
+2,The visuals and soundtrack were stunning.,artistic,"Classify the following text into one of the categories ['artistic', 'boring', 'emotional'].
+
+Text: The visuals and soundtrack were stunning.
+Category:",artistic,artistic,1.0
+2,I didn’t care about the characters or the ending.,boring,"Classify the following text into one of the categories ['artistic', 'boring', 'emotional'].
+
+Text: I didn’t care about the characters or the ending.
+Category:",boring,boring,1.0
+2,The performance moved me to tears.,emotional,"Classify the following text into one of the categories ['artistic', 'boring', 'emotional'].
+
+Text: The performance moved me to tears.
+Category:",emotional,emotional,1.0
+2,An innovative take on classic storytelling.,artistic,"Classify the following text into one of the categories ['artistic', 'boring', 'emotional'].
+
+Text: An innovative take on classic storytelling.
+Category:",artistic,artistic,1.0
+2,Nothing special; just boring dialogue and tired tropes.,boring,"Classify the following text into one of the categories ['artistic', 'boring', 'emotional'].
+
+Text: Nothing special; just boring dialogue and tired tropes.
+Category:",boring,boring,1.0
+3,The visuals and soundtrack were stunning.,artistic,"Example 1: The acting was wooden and the plot was dull. → boring
+Example 2: The film was visually stunning and creative. → artistic
+Example 3: The story brought me to tears and felt so real. → emotional
+Now classify:
+The visuals and soundtrack were stunning. →",aesthetic,artistic,0.0
+3,I didn’t care about the characters or the ending.,boring,"Example 1: The acting was wooden and the plot was dull. → boring
+Example 2: The film was visually stunning and creative. → artistic
+Example 3: The story brought me to tears and felt so real. → emotional
+Now classify:
+I didn’t care about the characters or the ending. →",uninvolving,artistic,0.0
+3,The performance moved me to tears.,emotional,"Example 1: The acting was wooden and the plot was dull. → boring
+Example 2: The film was visually stunning and creative. → artistic
+Example 3: The story brought me to tears and felt so real. → emotional
+Now classify:
+The performance moved me to tears. →",emotional,emotional,1.0
+3,An innovative take on classic storytelling.,artistic,"Example 1: The acting was wooden and the plot was dull. → boring
+Example 2: The film was visually stunning and creative. → artistic
+Example 3: The story brought me to tears and felt so real. → emotional
+Now classify:
+An innovative take on classic storytelling. →",original,artistic,0.0
+3,Nothing special; just boring dialogue and tired tropes.,boring,"Example 1: The acting was wooden and the plot was dull. → boring
+Example 2: The film was visually stunning and creative. → artistic
+Example 3: The story brought me to tears and felt so real. → emotional
+Now classify:
+Nothing special; just boring dialogue and tired tropes. →",uninspired,artistic,0.0
