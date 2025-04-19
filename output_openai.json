@@ -1,1 +1,1 @@
-null
+"```json\n{\n  \"Person\": [\n    \"Steve Jobs\",\n    \"Steve Wozniak\",\n    \"Ronald Wayne\",\n    \"Tim Cook\"\n  ],\n  \"Date\": [\n    \"April 1, 1976\",\n    \"2007\"\n  ],\n  \"Location\": [\n    \"Cupertino, California\",\n    \"San Jose\"\n  ],\n  \"Organization\": [\n    \"Apple Inc.\",\n    \"Homebrew Computer Club\"\n  ],\n  \"Event\": [\n    \"WWDC\"\n  ]\n}\n```"
