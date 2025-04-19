@@ -6,7 +6,7 @@ import os
 from openai import OpenAI
 import spacy
 from dateutil.parser import parse as parse_date, ParserError
-
+import aisuite as ai
 # Optional: Use OpenAI or HuggingFace Transformers if available
 try:
     import openai
@@ -73,11 +73,9 @@ class SpaCyEntityExtractor(EntityExtractionStrategy):
 
 
 class OpenAIEntityExtractor(EntityExtractionStrategy):
-    def __init__(self, model: str = "gpt-4o-mini"):
-       
-        self.client = OpenAI(
-        api_key=os.environ.get("OPENAI_API_KEY"),
-        )
+    def __init__(self, model: str = "openai:gpt-4o-mini"):
+    #    "gpt-4o-mini"
+        self.client = ai.Client()
         self.model = model
 
     def extract(self, text: str) -> Dict[str, List[str]]:
@@ -96,6 +94,11 @@ class OpenAIEntityExtractor(EntityExtractionStrategy):
         Respond only with JSON.
         """
         try:
+            # "groq:llama-3.1-8b-instant" 
+            # self.client = ai.Client()
+            # response = self.client.chat.completions.create(model=self.model, messages=prompt)
+            # response_content = response.choices[0].message.content
+            # print(response_content)
             self.client = OpenAI()
             response = self.client.responses.create(
             model=self.model,
@@ -104,9 +107,10 @@ class OpenAIEntityExtractor(EntityExtractionStrategy):
             )
 
             print(response.output_text)
+             
         except Exception as e:
             logger.exception("OpenAI extraction failed")
-            return {"Person": [], "Date": [], "Location": [], "Organization": [], "Event": []}
+            return None
 
 
 class BERTEntityExtractor(EntityExtractionStrategy):

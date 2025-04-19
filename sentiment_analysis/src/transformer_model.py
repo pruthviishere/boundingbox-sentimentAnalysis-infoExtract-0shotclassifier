@@ -243,37 +243,46 @@ class TransformerModel:
         val_dataset = SentimentDataset(X_val, y_val, self.tokenizer)
         
          
-        training_args = TrainingArguments(
-            output_dir=output_dir,
-            num_train_epochs=epochs,
-            fp16=False,
-            per_device_train_batch_size=batch_size,
-            dataloader_num_workers=4,
-            learning_rate=learning_rate,
-            lr_scheduler_type="cosine",
-            weight_decay=1e-4,
-            max_grad_norm=0.01,
-            metric_for_best_model="eval_map",
-            greater_is_better=True,
-            load_best_model_at_end=True,
-            eval_strategy="epoch",
-            save_strategy="epoch",
-            save_total_limit=2,
-            remove_unused_columns=False,
-            eval_do_concat_batches=False,
-            push_to_hub=False,
-            )
+        # training_argss = TrainingArguments(
+        #     output_dir=output_dir,
+        #     num_train_epochs=epochs,
+        #     fp16=False,
+        #     per_device_train_batch_size=batch_size,
+        #     dataloader_num_workers=4,
+        #     learning_rate=learning_rate,
+        #     lr_scheduler_type="cosine",
+        #     weight_decay=1e-4,
+        #     max_grad_norm=0.01,
+        #     metric_for_best_model="eval_map",
+        #     greater_is_better=True,
+        #     load_best_model_at_end=True,
+        #     eval_strategy="epoch",
+        #     save_strategy="epoch",
+        #     save_total_limit=2,
+        #     remove_unused_columns=False,
+        #     eval_do_concat_batches=False,
+        #     push_to_hub=False,
+        #     )
+        
+        training_args = TrainingArguments( output_dir=output_dir ,
+                                          evaluation_strategy="epoch",
+                                learning_rate=2e-5,
+                                # per_device_train_batch_size=8,
+                                # per_device_eval_batch_size=8,
+                                num_train_epochs=3,
+                                weight_decay=0.01 
+                                           )
+
         
         # Create trainer
         self.trainer = Trainer(
-            model=self.model,
+            model = self.model,
             args=training_args,
-            train_dataset=train_dataset,
-            eval_dataset=val_dataset,
-            compute_metrics=compute_metrics,
-            callbacks=[EarlyStoppingCallback(early_stopping_patience=2)]
-        )
+              train_dataset=train_dataset,
+            eval_dataset=val_dataset 
+                )
         
+ 
         # Train model
         print("Training transformer model...")
         start_time = time.time()
@@ -297,13 +306,13 @@ class TransformerModel:
         self.inference_time = (time.time() - inference_start) / len(X_val)
         
         print(f"Training completed in {self.training_time:.2f} seconds")
-        print(f"Validation accuracy: {eval_result['eval_accuracy']:.4f}")
-        print(f"Validation weighted F1: {eval_result['eval_f1']:.4f}")
+        # print(f"Validation accuracy: {eval_result['eval_accuracy']:.4f}")
+        # print(f"Validation weighted F1: {eval_result['eval_f1']:.4f}")
         print(f"Average inference time per sample: {self.inference_time*1000:.2f} ms")
         
         results = {
             "training_time": self.training_time,
-            "validation_results": eval_result,
+            # "validation_results": eval_result,
             "inference_time": self.inference_time
         }
         
